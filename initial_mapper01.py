@@ -22,7 +22,7 @@ for a_name in list_names:
             c = 0
             if l.query_alignment_length > 1000:
                 c = c + 1
-                #os.chdir("/home/ubuntu/pysam_streaming/fBamFiles")
+                #os.chdir("/home/ubuntu/pysam_streaming/f_BamFiles")
                 #outfile = pysam.AlignmentFile(a_name, "w", template=infile)
                 #outfile.write(l)
                 print c
