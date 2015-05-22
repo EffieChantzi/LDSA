@@ -12,10 +12,7 @@ for l in list_reads:
     list_cigar = []
     if l.query_alignment_length > 91:
         list_cigar = l.cigartuples
-        #print list_cigar
 
-###################
-#list_cigar = [(0, 91)]
 
         if list_cigar:
                 new_list = []
