@@ -24,9 +24,9 @@ for l in list_reads:
                         #print new_list
 
                 matches = 0
-                if len(new_list) > 0:
-                        for i in range(len(new_list)-1):
-                                if new_list[i] == 0:
-                                        matches = matches + new_list[i + 1]
+                #if len(new_list) > 0:
+                for i in range(len(new_list)-1):
+                        if new_list[i] == 0:
+                                matches = matches + new_list[i + 1]
                 print matches
 
