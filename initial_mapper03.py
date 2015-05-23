@@ -22,7 +22,7 @@ for a_name in list_names:
         list_reads = list(samfile.fetch(until_eof = True))
         for l in list_reads:
                 list_cigar = []
-                if l.query_alignment_length > 1000:
+                if abs(l.query_alignment_length) > 1000:
                         list_cigar = l.cigartuples
 
                         if list_cigar:
