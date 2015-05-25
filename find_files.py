@@ -32,7 +32,7 @@ for a_name in list_names:
 
 
 	if counter > 0:                        
-                print "%s\t%d" %(a_name, counter)
+                print "%s\t%d" % (a_name, counter)
           
         if os.path.isfile(a_name) and os.path.isfile(bai_file):
                 os.remove(a_name)
