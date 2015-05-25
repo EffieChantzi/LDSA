@@ -75,15 +75,13 @@ for a_name in list_names:
                                 total_dels = total_dels + dels
                                 total_skipped = total_skipped + skipped
                                 total_unaligned = total_unaligned + unaligned
-
+                                
+        info_split = a_name.split('.')
+        print "individual: %s, country: %s, date: %s" % (info_split[0], info_split[4], info_split[6])
+        print "TM: %d - TI: %d - TD: %d - TS: %d - TU: %d" % (total_matches, total_ins, total_dels, total_skipped, total_unaligned)
         if os.path.isfile(a_name) and os.path.isfile(bai_file):
                 os.remove(a_name)
                 os.remove(bai_file)
-print
-print("--- %s seconds ---" % (time.time() - start_time))
--- INSERT --                                                                                                                         83,7          Bot
 
--- INSERT --                                                                                                                         73,7          76%
-
-
--- INSERT --                                                       
+print("--- %s min ---" % (time.time() - start_time)/60)
+                                                     
