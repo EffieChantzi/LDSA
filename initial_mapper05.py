@@ -58,17 +58,17 @@ for a_name in list_names:
                                                 matches = matches + new_list[i + 1]
                                                 print "%s: %d - %s: %d" % ("M", matches, "SP", pos)
                                                 pos = pos + (new_list[i + 1] - 1)
-                                        else if new_list[i] == 1:
+                                        elif new_list[i] == 1:
                                                 ins = ins + new_list[i + 1]
                                                 print "%s: %d" % ("I", ins)
-                                        else if new_list[i] == 2:
+                                        elif new_list[i] == 2:
                                                 pos = pos + 1
                                                 dels = dels + new_list[i + 1]
                                                 print "%s: %d - %s: %d" % ("D", dels, "SP", pos)
                                                 pos = pos + (new_list[i + 1] - 1)
-                                        else if new_list[i] == 3:
+                                        elif                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                if new_list[i] == 3:
                                                 skipped = skipped + new_list[i + 1]
-                                        else if new_list[i] == 4:
+                                        elif new_list[i] == 4:
                                                 unaligned = unaligned + new_list[i + 1]
 
                                 #print matches
