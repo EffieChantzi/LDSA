@@ -32,7 +32,6 @@ for a_name in list_names:
 
 
 	if counter > 0:                        
-                info_split = a_name.split('.')
                 print "%s\t%d" %(a_name, counter)
           
         if os.path.isfile(a_name) and os.path.isfile(bai_file):
