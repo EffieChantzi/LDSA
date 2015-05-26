@@ -85,5 +85,5 @@ for a_name in list_names:
                 os.remove(a_name)
                 os.remove(bai_file)
 
-print("--- %s min ---" % (time.time() - start_time)/60)
+print("--- %s seconds ---" % (time.time() - start_time))
                                                      
