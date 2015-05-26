@@ -5,14 +5,14 @@ import sys
 import pysam
 import glob
 import time
-import subprocess
+from subprocess import call
 import signal
 
 
 start_time = time.time()
 
 
-filepath = "/home/ubuntu/pysam_streaming/bam_filenames"
+filepath = "bam_filenames.txt"
 fileurl = open(filepath, "r")
 list_names = fileurl.read().splitlines()
 
@@ -28,8 +28,22 @@ for a_name in list_names:
 
         #bam_pro = subprocess.Popen(cmd1, stdout = subprocess.PIPE, shell = True, preexec_fn = os.setsid)
         #bai_pro = subprocess.Popen(cmd2, stdout = subprocess.PIPE, shell = True, preexec_fn = os.setsid)
-        bam_d = os.system(cmd1)
-        bai_d = os.system(cmd2)
+        try:
+                #bam_d = subprocess.Popen(['swift', 'download', 'GenomeData',  '' + a_name])
+                bam_d = os.system(cmd1)
+        except IOError as error:
+
+                print "Download of bam failed"
+        try:
+
+                #bai_d = subprocess.Popen(['swift', 'download', 'GenomeData', '' + bai_file])
+                bai_d = os.system(cmd2)
+                
+                except IOError as error:
+                print "Download of bai failed"
+
+        #bam_d = os.system(cmd1)
+        #bai_d = os.system(cmd2)
         #bam_d.kill()
         #bai_d.kill()
         #subprocess.call(cmd1, shell=True)
@@ -38,7 +52,8 @@ for a_name in list_names:
         #p2 = subprocess.call(['swift', 'download', 'GenomeData', bai_file])
         samfile = pysam.AlignmentFile(a_name, "rb")
         list_reads = list(samfile.fetch(until_eof = True))
- for l in list_reads:
+
+        for l in list_reads:
                 list_cigar = []
                 if abs(l.query_alignment_length) > 1000:
                         counter = counter + 1
@@ -46,6 +61,8 @@ for a_name in list_names:
 
         if counter > 0:
                 print "%s\t%d" %(a_name, counter)
+        else:
+                print "None"
 
 
         #os.killpg(bam_pro.pid, signal.SIGTERM)
