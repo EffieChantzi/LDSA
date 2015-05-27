@@ -6,8 +6,10 @@ import pysam
 import time
 import re
 
-
-for a_name in sys.stdin:
+filepath = "bam_filenames"
+fileurl = open(filepath, "r")
+list_names = fileurl.read().splitlines()
+for a_name in list_names:
         
         info_split = a_name.split('.')
         samfile = pysam.AlignmentFile(a_name, "rb")
