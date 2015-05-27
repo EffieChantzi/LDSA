@@ -5,6 +5,7 @@ import os
 import sys
 import pysam
 import time
+import re
 
 
 filepath = "bam_filenames"
@@ -29,6 +30,8 @@ for a_name in list_names:
                 
                 if abs(l.query_alignment_length) > 1000:
                         list_cigar = l.cigartuples
+                        MD_tag = l.get_tags()[1]
+                        seq_matches = sum(map(int, re.findall('\d+', MD_tag[1])))
         
                         if list_cigar:
                                 for elem in list_cigar:
@@ -43,6 +46,10 @@ for a_name in list_names:
                                                 skipped = skipped + sublist[1]
                                         elif sublist[0] == 4:
                                                 unaligned = unaligned + sublist[1]
+                                                
+                                                
+                                if seq_matches > 0:
+                                        print "%s\t%s\t%\t%s\t%s" % (info_split[0], info_split[4], "SNPs", (l.query_alignment_length - seq_matches))        
                                 if matches > 0:
                                         print "%s\t%s\t%\t%s\t%s" % (info_split[0], info_split[4], "Matches", matches)        
                                 if ins > 0:
