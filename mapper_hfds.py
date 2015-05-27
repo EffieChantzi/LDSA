@@ -7,12 +7,7 @@ import time
 import re
 
 
-filepath = "bam_filenames"
-fileurl = open(filepath, "r")
-list_names = fileurl.read().splitlines()
-
-
-for a_name in list_names:
+for a_name in sys.stdin:
         
         info_split = a_name.split('.')
         samfile = pysam.AlignmentFile(a_name, "rb")
@@ -30,9 +25,6 @@ for a_name in list_names:
                 
                 if abs(l.query_alignment_length) > 1000:
                         list_cigar = l.cigartuples
-                        MD_tag = l.get_tags()[1]
-                        seq_matches = map(int, re.findall('\d+', MD_tag[1]))
-                        snps = (abs(l.query_alignment_length) - sum(seq_matches))
                         
                         if list_cigar:
                                 for elem in list_cigar:
@@ -48,9 +40,6 @@ for a_name in list_names:
                                         elif sublist[0] == 4:
                                                 unaligned = unaligned + sublist[1]
                                                 
-                                                
-                                if seq_matches > 0:
-                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "SNPs", snps)        
                                 if matches > 0:
                                         print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Matches", matches)        
                                 if ins > 0:
