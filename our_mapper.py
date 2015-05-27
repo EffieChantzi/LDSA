@@ -26,13 +26,15 @@ for a_name in list_names:
                 dels = 0
                 unaligned = 0
                 skipped = 0
+                snps = 0
                 list_cigar = []
                 
                 if abs(l.query_alignment_length) > 1000:
                         list_cigar = l.cigartuples
                         MD_tag = l.get_tags()[1]
-                        seq_matches = sum(map(int, re.findall('\d+', MD_tag[1])))
-        
+                        seq_matches = map(int, re.findall('\d+', MD_tag[1]))
+                        snps = (abs(l.query_alignment_length) - sum(seq_matches))
+                        
                         if list_cigar:
                                 for elem in list_cigar:
                                         sublist = elem
@@ -49,7 +51,7 @@ for a_name in list_names:
                                                 
                                                 
                                 if seq_matches > 0:
-                                        print "%s\t%s\t%\t%s\t%s" % (info_split[0], info_split[4], "SNPs", (l.query_alignment_length - seq_matches))        
+                                        print "%s\t%s\t%\t%s\t%s" % (info_split[0], info_split[4], "SNPs", snps)        
                                 if matches > 0:
                                         print "%s\t%s\t%\t%s\t%s" % (info_split[0], info_split[4], "Matches", matches)        
                                 if ins > 0:
