@@ -51,14 +51,13 @@ for a_name in list_names:
                                                 
                                                 
                                 if seq_matches > 0:
-                                        print "%s\t%s\t%s\t%s" % (info_split[0], info_split[4], "SNPs", snps)        
+                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "SNPs", snps)        
                                 if matches > 0:
-                                        print "%s\t%s\t%s\t%s" % (info_split[0], info_split[4], "Matches", matches)        
+                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Matches", matches)        
                                 if ins > 0:
-                                        print "%s\t%s\t%s\t%s" % (info_split[0], info_split[4], "Insertions", ins)
+                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Insertions", ins)
                                 if dels > 0:
-                                        print "%s\t%s\t%s\t%s" % (info_split[0], info_split[4], "Deletions", dels)    
+                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Deletions", dels)    
                                 if unaligned > 0:
-                                        print "%s\t%s\t%s\t%s" % (info_split[0], info_split[4], "Soft_clips", unaligned)
-                                if skipped > 0:
-                                        print "%s\t%s\t%s\t%s" % (info_split[0], info_split[4], "Skipped_regions", skipped) 
+                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Soft_clips", unaligned)
+                                
