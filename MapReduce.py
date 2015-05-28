@@ -19,21 +19,19 @@ for a_name in list_names:
         samfile = pysam.AlignmentFile(a_name, "rb")
         list_reads = list(samfile.fetch(until_eof = True))
 
+        matches = 0
+        ins = 0
+        dels = 0
+        unaligned = 0
+        skipped = 0
+        
+                
         for l in list_reads:
                 
-                matches = 0
-                ins = 0
-                dels = 0
-                unaligned = 0
-                skipped = 0
-                snps = 0
                 list_cigar = []
                 
                 if abs(l.query_alignment_length) > 1000:
                         list_cigar = l.cigartuples
-                        MD_tag = l.get_tags()[1]
-                        seq_matches = map(int, re.findall('\d+', MD_tag[1]))
-                        snps = (abs(l.query_alignment_length) - sum(seq_matches))
                         
                         if list_cigar:
                                 for elem in list_cigar:
@@ -50,14 +48,13 @@ for a_name in list_names:
                                                 unaligned = unaligned + sublist[1]
                                                 
                                                 
-                                if seq_matches > 0:
-                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "SNPs", snps)        
-                                if matches > 0:
-                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Matches", matches)        
-                                if ins > 0:
-                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Insertions", ins)
-                                if dels > 0:
-                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Deletions", dels)    
-                                if unaligned > 0:
-                                        print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Soft_clips", unaligned)
                                 
+        
+        if matches > 0:
+                print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Matches", matches)        
+        if ins > 0:
+                print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Insertions", ins)
+        if dels > 0:
+                print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Deletions", dels)    
+        if unaligned > 0:
+                print "%s.%s.%s\t%s" % (info_split[0], info_split[4], "Soft_clips", unaligned)                        
