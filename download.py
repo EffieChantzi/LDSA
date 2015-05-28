@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+#HG00096.chrom20.ILLUMINA.bwa.GBR.low_coverage.20120522.bam
+#HG00097.chrom20.ILLUMINA.bwa.GBR.low_coverage.20130415.bam
+#HG00099.chrom20.ILLUMINA.bwa.GBR.low_coverage.20130415.bam
+#HG00100.chrom20.ILLUMINA.bwa.GBR.low_coverage.20130415.bam
+
 import os
 import sys
 
