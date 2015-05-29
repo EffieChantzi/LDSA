@@ -31,19 +31,19 @@ for a_name in list_names:
                 list_cigar = []
                 list_tags = []
 
-                if abs(l.query_alignment_length) > 1000:
+                if abs(l.template_length) > 1000:
 
                         list_cigar = l.cigartuples
                         list_tags = l.get_tags()
                         if list_tags:
+                                
                                 for tag in list_tags:
                                         if tag[0] == 'MD':
-MD_tag = tag[1]
+                                                MD_tag = tag[1]
                                                 seq_matches = map(int, re.findall("\d+", MD_tag))
                                                 snps_read = (abs(l.query_alignment_length) - sum(seq_matches))
                                                 snps = snps + snps_read
                                                 break
-
 
                         if list_cigar:
                                 for elem in list_cigar:
