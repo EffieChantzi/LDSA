@@ -3,16 +3,16 @@
 
 import swiftclient
 
-username = 'efch0787'
-password = 'wpfeP429::ec'
-tenant_name = 'g2015016'
-#auth_url = 'http://smog.uppmax.uu.se:5000/v2.0'
+username = ''
+password = ''
+tenant_name = ''
+#auth_url = ''
 
 swift = swiftclient.client.Connection(auth_version='2',
                                       user=username,
                                       key=password,
                                       tenant_name=tenant_name,
-                                      authurl='http://smog.uppmax.uu.se:5000/v2.0',
+                                      authurl='',
 )
 
 #(response, bucket_list) = swift. get_account()
