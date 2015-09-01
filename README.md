@@ -8,7 +8,7 @@ Email: Efthymia.Chantzi.0787@student.uu.se
 MSc programme in Bioinformatics
 
 
-ELEFTHERIOS A NAGNOSTOPOULOS
+ELEFTHERIOS ANAGNOSTOPOULOS
 
 Email: Eleftherios.Anagnostopoulos.8127@student.uu.se
 
